@@ -6,7 +6,7 @@ L'intérêt de mettre une application au sein d'un conteneur Docker, c'est de po
 
 [Punk'Avenue](https://punkave.com/), le créateur du CMF Apostrophe, explique [comment bâtir une image Docker pour Apostrophe](https://apostrophecms.org/docs/tutorials/howtos/docker.html). Cependant, c'est assez sommaire et pas vraiment pratique en vue de déployer régulièrement l'application en production.
 
-M'étant inspiré de l'exemple utilisé par Punk'Avenue, j'ai ajouté l'installation de `libpng-dev`pour éviter une erreur d'upload d'images lors de l'utilisation de l'appli :
+M'étant inspiré de l'exemple utilisé par Punk'Avenue, j'ai ajouté l'installation de `libpng-dev` pour éviter une erreur d'upload d'images lors de l'utilisation de l'appli :
 
 ```docker
 FROM node:boron-slim
@@ -78,7 +78,7 @@ Pour lancer l'image Docker, on lance la commande `docker-compose up` et s'il s'a
 
 ## Ajout serveur Nginx
 
-Pour cette appli, j'ai besoin d'un serveur [Nginx](https://nginx.org/en/), qui me servira de serveur de fichier statiques (plus rapide que Node dans ce cas) et de reverse-proxy vers mon app. Pour faire simple, Nginx en face d'Apache est un peu ce qu'est Node face à PHP : asynchrone pour des connexions non-bloquantes, moins consommateur de RAM et capable d'absorber plus de connexions simultanées. 
+Pour cette appli, j'ai besoin d'un serveur [Nginx](https://nginx.org/en/), qui me servira de serveur de fichiers statiques (plus rapide que Node dans ce cas) et de reverse-proxy vers mon app. Pour faire simple, Nginx en face d'Apache est un peu ce qu'est Node face à PHP : asynchrone pour des connexions non-bloquantes, moins consommateur de RAM et capable d'absorber plus de connexions simultanées. 
 
 Voici la configuration Nginx dont je me sers : 
 
@@ -183,7 +183,7 @@ events {
 
 ## Création du réseau de conteneurs
 
-Enfin, pour la configuration de production, on assemble les différents conteneurs (base de données Mongo, serveur Apostrophe/Node, serveur web Nginx)  dans un "network" Docker (que j'ai appelé "siteperso" dans l'exemple ci-dessous), c'est-à-dire un réseau de conteneurs que Docker gèrera comme des micro-services indépendants et communiquant entre eux.
+Enfin, pour la configuration de production, on assemble les différents conteneurs (base de données Mongo, serveur Node pour l'application Apostrophe, serveur web Nginx)  dans un "network" Docker (que j'ai appelé "siteperso" dans l'exemple ci-dessous), c'est-à-dire un réseau de conteneurs que Docker gèrera comme des micro-services indépendants et communiquant entre eux.
 
 ```yaml
 version: '3'
