@@ -234,5 +234,5 @@ networks:
 
 Sur le serveur de production, ne reste plus qu'à lancer la commande `docker-compose up -d` pour construire et exécuter l'image Docker en arrière plan. Cela crée le réseau de conteneurs. Nginx écoute sur les ports 80 (HTTP) et 443 (HTTPS) pour accepter les connexions entrantes et les traiter.
 
-Il y a aussi quelques étapes supplémentaires à traiter avant un déploiement complet. Ceci sera détaillé [au prochain épisode.](/blog/dockeriser-et-deployer-une-app-node-2-2)
+Il y a aussi quelques étapes supplémentaires à traiter avant un déploiement complet. Ceci sera détaillé [au prochain épisode.](/dockeriser-et-deployer-une-app-node-2-2)
 
