@@ -35,9 +35,9 @@ CMD [ "npm", "start" ]
 
 ## Configuration de développement et de production
 
-Plutôt que de rester sur de la ligne de commande comme dans l'exemple d'Apostrophe, je propose des fichiers de configuration.
+Plutôt que de rester sur de la ligne de commande comme dans l'exemple d'Apostrophe, je propose d'utiliser des fichiers de configuration, comme préconisé par Docker. Par défaut, on se sert d'un fichier `docker-compose.yml`  (détaillé plus loin dans cet article).
 
-Pour le développement : 
+Pour le développement, j'utilise un fichier secondaire, que j'ai nommé `docker-compose-dev.yml`: 
 
 ```yaml
 falkodev-site-db:
@@ -73,7 +73,7 @@ falkodev-site-dev:
 
 J'expose usuellement le port 3000 pour la production et le port 3001 pour le développement. La commande `sh ./scripts/docker-dev.sh` est un simple fichier bash qui lance une tâche npm. Chez moi, il s'agit de `npm run dev` qui démarre la version de développement de mon application.
 
-Pour lancer l'image Docker, on lance la commande `docker-compose up` et s'il s'agit d'un autre fichier de configuration que celui par défaut (`docker-compose.yml`), on passe la commande suivante `docker-compose -f docker-compose-dev.yml up` où `docker-compose-dev.yml` est le fichier de configuration utilisé. 
+Pour lancer l'image Docker, par défaut, la commande `docker-compose up` utilise par défaut un fichier `docker-compose.yml`. Lors de la phase de développement, comme il s'agit d'un autre fichier, je passe la commande suivante `docker-compose -f docker-compose-dev.yml up`. 
 
 
 ## Ajout serveur Nginx
@@ -185,6 +185,7 @@ events {
 
 Enfin, pour la configuration de production, on assemble les différents conteneurs (base de données Mongo, serveur Node pour l'application Apostrophe, serveur web Nginx)  dans un "network" Docker (que j'ai appelé "siteperso" dans l'exemple ci-dessous), c'est-à-dire un réseau de conteneurs que Docker gèrera comme des micro-services indépendants et communiquant entre eux.
 
+C'est là qu'intervient le fichier `docker-compose.yml` :
 ```yaml
 version: '3'
 
