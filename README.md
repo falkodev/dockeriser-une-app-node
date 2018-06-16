@@ -73,7 +73,7 @@ falkodev-site-dev:
 
 J'expose usuellement le port 3000 pour la production et le port 3001 pour le développement. La commande `sh ./scripts/docker-dev.sh` est un simple fichier bash qui lance une tâche npm. Chez moi, il s'agit de `npm run dev` qui démarre la version de développement de mon application.
 
-Pour lancer l'image Docker, par défaut, la commande `docker-compose up` utilise par défaut un fichier `docker-compose.yml`. Lors de la phase de développement, comme il s'agit d'un autre fichier, je passe la commande suivante `docker-compose -f docker-compose-dev.yml up`. 
+Pour lancer l'image Docker, la commande `docker-compose up` utilise par défaut un fichier `docker-compose.yml`. Lors de la phase de développement, comme il s'agit d'un autre fichier, je passe la commande suivante `docker-compose -f docker-compose-dev.yml up`. 
 
 
 ## Ajout serveur Nginx
